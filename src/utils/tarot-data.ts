@@ -1,0 +1,96 @@
+import type { TarotCard } from '@/types/tarot'
+
+export const ALL_TAROT_CARDS: TarotCard[] = [
+  // === 大阿尔卡纳 (22张) ===
+  { id: 0,  name: '愚者',   nameEn: 'The Fool',       arcana: 'major', number: 0,  keywords: ['开始','冒险','天真','自由'], meaningUpright: '新的开始，冒险精神，无限可能。', meaningReversed: '鲁莽，犹豫不决，错失良机。' },
+  { id: 1,  name: '魔术师', nameEn: 'The Magician',    arcana: 'major', number: 1,  keywords: ['创造','能力','专注','意志'], meaningUpright: '创造力与技能，资源在手，心想事成。', meaningReversed: '欺骗，能力不足，计划受阻。' },
+  { id: 2,  name: '女祭司', nameEn: 'The High Priestess', arcana: 'major', number: 2,  keywords: ['直觉','潜意识','神秘','智慧'], meaningUpright: '内在智慧，直觉引导，静待时机。', meaningReversed: '忽视直觉，秘密泄露，情感封闭。' },
+  { id: 3,  name: '皇后',   nameEn: 'The Empress',     arcana: 'major', number: 3,  keywords: ['丰饶','母性','自然','感官'], meaningUpright: '丰盛收获，母性关怀，创造力爆发。', meaningReversed: '依赖，创造力受阻，情感匮乏。' },
+  { id: 4,  name: '皇帝',   nameEn: 'The Emperor',     arcana: 'major', number: 4,  keywords: ['权威','结构','稳定','领导'], meaningUpright: '秩序与权威，稳定掌控，领导力强。', meaningReversed: '专制，失控，缺乏纪律。' },
+  { id: 5,  name: '教皇',   nameEn: 'The Hierophant',  arcana: 'major', number: 5,  keywords: ['传统','信仰','教育','指导'], meaningUpright: '遵守传统，寻求指导，精神成长。', meaningReversed: '叛逆，非传统，僵化教条。' },
+  { id: 6,  name: '恋人',   nameEn: 'The Lovers',      arcana: 'major', number: 6,  keywords: ['爱情','选择','和谐','关系'], meaningUpright: '真爱结合，重要选择，和谐关系。', meaningReversed: '分离，错误选择，价值观冲突。' },
+  { id: 7,  name: '战车',   nameEn: 'The Chariot',     arcana: 'major', number: 7,  keywords: ['胜利','意志','决心','控制'], meaningUpright: '克服困难，意志力取胜，前进动力。', meaningReversed: '失控，失败，方向错误。' },
+  { id: 8,  name: '力量',   nameEn: 'Strength',        arcana: 'major', number: 8,  keywords: ['勇气','耐心','内在力','柔和'], meaningUpright: '以柔克刚，内在力量，耐心取胜。', meaningReversed: '软弱，缺乏信心，被情绪控制。' },
+  { id: 9,  name: '隐士',   nameEn: 'The Hermit',      arcana: 'major', number: 9,  keywords: ['内省','孤独','智慧','引导'], meaningUpright: '自我反思，寻求真理，独处智慧。', meaningReversed: '孤立，逃避现实，拒绝建议。' },
+  { id: 10, name: '命运之轮', nameEn: 'Wheel of Fortune', arcana: 'major', number: 10, keywords: ['命运','转变','循环','机遇'], meaningUpright: '命运转折，好运来临，顺其自然。', meaningReversed: '厄运，抗拒变化，恶性循环。' },
+  { id: 11, name: '正义',   nameEn: 'Justice',         arcana: 'major', number: 11, keywords: ['公正','真理','因果','平衡'], meaningUpright: '公平公正，真相大白，合理结果。', meaningReversed: '不公，逃避责任，法律纠纷。' },
+  { id: 12, name: '倒吊人', nameEn: 'The Hanged Man',   arcana: 'major', number: 12, keywords: ['牺牲','换位','等待','顿悟'], meaningUpright: '换个角度看问题，甘愿牺牲，灵性觉醒。', meaningReversed: '固执，无谓牺牲，停滞不前。' },
+  { id: 13, name: '死神',   nameEn: 'Death',           arcana: 'major', number: 13, keywords: ['结束','转变','重生','放下'], meaningUpright: '旧阶段结束，迎来新生，蜕变成长。', meaningReversed: '抗拒改变，停滞，恐惧转变。' },
+  { id: 14, name: '节制',   nameEn: 'Temperance',      arcana: 'major', number: 14, keywords: ['平衡','调和','耐心','中庸'], meaningUpright: '中庸之道，平衡调和，耐心等待。', meaningReversed: '失衡，过度，缺乏节制。' },
+  { id: 15, name: '恶魔',   nameEn: 'The Devil',       arcana: 'major', number: 15, keywords: ['束缚','欲望','物质','阴影'], meaningUpright: '物质束缚，欲望诱惑，认清枷锁。', meaningReversed: '解脱，摆脱依赖，重获自由。' },
+  { id: 16, name: '高塔',   nameEn: 'The Tower',       arcana: 'major', number: 16, keywords: ['突变','崩溃','启示','解放'], meaningUpright: '突发事件，旧结构崩溃，真相揭露。', meaningReversed: '逃避改变，勉强维持，恐惧崩溃。' },
+  { id: 17, name: '星星',   nameEn: 'The Star',        arcana: 'major', number: 17, keywords: ['希望','信念','疗愈','灵感'], meaningUpright: '希望之光，心灵疗愈，灵感涌现。', meaningReversed: '绝望，失去信心，迷茫。' },
+  { id: 18, name: '月亮',   nameEn: 'The Moon',        arcana: 'major', number: 18, keywords: ['幻象','恐惧','潜意识','迷惑'], meaningUpright: '面对恐惧，探索潜意识，直觉导航。', meaningReversed: '恐惧消散，真相浮现，摆脱迷惑。' },
+  { id: 19, name: '太阳',   nameEn: 'The Sun',         arcana: 'major', number: 19, keywords: ['快乐','成功','活力','光明'], meaningUpright: '阳光灿烂，成功喜悦，充满活力。', meaningReversed: '暂时阴霾，缺乏热情，延迟成功。' },
+  { id: 20, name: '审判',   nameEn: 'Judgement',       arcana: 'major', number: 20, keywords: ['重生','召唤','评估','觉醒'], meaningUpright: '内在召唤，自我评估，灵魂觉醒。', meaningReversed: '逃避召唤，自我怀疑，无法释怀。' },
+  { id: 21, name: '世界',   nameEn: 'The World',       arcana: 'major', number: 21, keywords: ['完成','圆满','成就','整合'], meaningUpright: '大功告成，圆满结局，整合完善。', meaningReversed: '未完成，拖延，功亏一篑。' },
+  // === 小阿尔卡纳 - 权杖 ===
+  { id: 22, name: '权杖一', nameEn: 'Ace of Wands',    arcana: 'minor', suit: 'wands', number: 1,  keywords: ['创意','灵感','新开始','激情'], meaningUpright: '创意火花，新的冒险，激情四射。', meaningReversed: '创意受阻，延迟，缺乏方向。' },
+  { id: 23, name: '权杖二', nameEn: 'Two of Wands',    arcana: 'minor', suit: 'wands', number: 2,  keywords: ['规划','远见','决定','探索'], meaningUpright: '放眼未来，制定计划，勇敢前行。', meaningReversed: '犹豫不决，害怕未知，规划失当。' },
+  { id: 24, name: '权杖三', nameEn: 'Three of Wands',  arcana: 'minor', suit: 'wands', number: 3,  keywords: ['扩展','远见','贸易','旅行'], meaningUpright: '远航扩展，计划成真，眼界开阔。', meaningReversed: '受阻，计划延误，视野狭窄。' },
+  { id: 25, name: '权杖四', nameEn: 'Four of Wands',   arcana: 'minor', suit: 'wands', number: 4,  keywords: ['庆祝','和谐','家园','稳定'], meaningUpright: '欢庆时刻，家庭和睦，安居乐业。', meaningReversed: '不和谐，家庭矛盾，庆祝中断。' },
+  { id: 26, name: '权杖五', nameEn: 'Five of Wands',   arcana: 'minor', suit: 'wands', number: 5,  keywords: ['竞争','冲突','挑战','分歧'], meaningUpright: '良性竞争，思想碰撞，激发进步。', meaningReversed: '恶性竞争，内耗，逃避冲突。' },
+  { id: 27, name: '权杖六', nameEn: 'Six of Wands',    arcana: 'minor', suit: 'wands', number: 6,  keywords: ['胜利','认可','自信','凯旋'], meaningUpright: '胜利归来，获得认可，信心满满。', meaningReversed: '失败，不被认可，骄傲自大。' },
+  { id: 28, name: '权杖七', nameEn: 'Seven of Wands',  arcana: 'minor', suit: 'wands', number: 7,  keywords: ['坚持','防守','勇气','立场'], meaningUpright: '坚守立场，勇敢抵抗，坚持到底。', meaningReversed: '放弃抵抗，不堪重负，失去阵地。' },
+  { id: 29, name: '权杖八', nameEn: 'Eight of Wands',  arcana: 'minor', suit: 'wands', number: 8,  keywords: ['速度','行动','进展','飞翔'], meaningUpright: '快速进展，行动时刻，万事俱备。', meaningReversed: '延迟，混乱，方向错误。' },
+  { id: 30, name: '权杖九', nameEn: 'Nine of Wands',   arcana: 'minor', suit: 'wands', number: 9,  keywords: ['韧性','坚持','最后冲刺','警惕'], meaningUpright: '坚韧不拔，最后一搏，保持警惕。', meaningReversed: '精疲力竭，放弃，过度防御。' },
+  { id: 31, name: '权杖十', nameEn: 'Ten of Wands',    arcana: 'minor', suit: 'wands', number: 10, keywords: ['负担','压力','责任','过度'], meaningUpright: '肩负重担，压力山大，学会分担。', meaningReversed: '放下负担，学会拒绝，压力释放。' },
+  { id: 32, name: '权杖侍从', nameEn: 'Page of Wands',  arcana: 'minor', suit: 'wands', number: 11, keywords: ['探索','热情','消息','新想法'], meaningUpright: '充满热情，新消息到，探索未知。', meaningReversed: '缺乏方向，坏消息，三分钟热度。' },
+  { id: 33, name: '权杖骑士', nameEn: 'Knight of Wands', arcana: 'minor', suit: 'wands', number: 12, keywords: ['行动','冒险','冲动','能量'], meaningUpright: '果断行动，勇往直前，充满能量。', meaningReversed: '冲动鲁莽，半途而废，缺乏耐心。' },
+  { id: 34, name: '权杖皇后', nameEn: 'Queen of Wands', arcana: 'minor', suit: 'wands', number: 13, keywords: ['自信','热情','独立','魅力'], meaningUpright: '自信魅力，领导才能，温暖有力。', meaningReversed: '嫉妒，控制欲，缺乏自信。' },
+  { id: 35, name: '权杖国王', nameEn: 'King of Wands',  arcana: 'minor', suit: 'wands', number: 14, keywords: ['领导','远见','创业','魄力'], meaningUpright: '远见卓识，创业精神，领导魅力。', meaningReversed: '专制，好高骛远，缺乏执行力。' },
+  // === 圣杯 ===
+  { id: 36, name: '圣杯一', nameEn: 'Ace of Cups',     arcana: 'minor', suit: 'cups', number: 1,  keywords: ['爱','情感','直觉','新感情'], meaningUpright: '新的情感，爱的降临，心灵满足。', meaningReversed: '情感空虚，爱被拒绝，心门紧闭。' },
+  { id: 37, name: '圣杯二', nameEn: 'Two of Cups',     arcana: 'minor', suit: 'cups', number: 2,  keywords: ['结合','伙伴','平等','吸引'], meaningUpright: '两情相悦，伙伴关系，和谐合作。', meaningReversed: '分手，不平等，信任破裂。' },
+  { id: 38, name: '圣杯三', nameEn: 'Three of Cups',   arcana: 'minor', suit: 'cups', number: 3,  keywords: ['友谊','庆祝','团体','欢乐'], meaningUpright: '友情欢聚，庆祝活动，团队合作。', meaningReversed: '过度放纵，流言蜚语，团体矛盾。' },
+  { id: 39, name: '圣杯四', nameEn: 'Four of Cups',    arcana: 'minor', suit: 'cups', number: 4,  keywords: ['沉思','冷漠','不满','内省'], meaningUpright: '内心沉思，重新评估，静待良机。', meaningReversed: '走出消沉，发现新机会，重燃兴趣。' },
+  { id: 40, name: '圣杯五', nameEn: 'Five of Cups',    arcana: 'minor', suit: 'cups', number: 5,  keywords: ['失落','悲伤','遗憾','希望'], meaningUpright: '为失去悲伤，但仍有希望，接受现实。', meaningReversed: '走出悲伤，重拾信心，向前看。' },
+  { id: 41, name: '圣杯六', nameEn: 'Six of Cups',     arcana: 'minor', suit: 'cups', number: 6,  keywords: ['回忆','怀旧','纯真','礼物'], meaningUpright: '美好回忆，纯真善意，旧友重逢。', meaningReversed: '沉溺过去，拒绝成长，遗忘教训。' },
+  { id: 42, name: '圣杯七', nameEn: 'Seven of Cups',   arcana: 'minor', suit: 'cups', number: 7,  keywords: ['幻想','选择','梦想','迷惑'], meaningUpright: '众多选择，白日梦想，追随内心。', meaningReversed: '迷失幻想，做出选择，脚踏实地。' },
+  { id: 43, name: '圣杯八', nameEn: 'Eight of Cups',   arcana: 'minor', suit: 'cups', number: 8,  keywords: ['离开','寻找','转变','放逐'], meaningUpright: '毅然离开，寻找更高意义，精神探索。', meaningReversed: '逃避，徘徊不定，不敢放弃。' },
+  { id: 44, name: '圣杯九', nameEn: 'Nine of Cups',    arcana: 'minor', suit: 'cups', number: 9,  keywords: ['满足','愿望','舒适','享受'], meaningUpright: '心想事成，愿望达成，满足惬意。', meaningReversed: '不满，物质主义，愿望落空。' },
+  { id: 45, name: '圣杯十', nameEn: 'Ten of Cups',     arcana: 'minor', suit: 'cups', number: 10, keywords: ['幸福','家庭','圆满','和谐'], meaningUpright: '家庭幸福，情感圆满，和谐美好。', meaningReversed: '家庭不和，梦想破灭，关系危机。' },
+  { id: 46, name: '圣杯侍从', nameEn: 'Page of Cups',   arcana: 'minor', suit: 'cups', number: 11, keywords: ['灵感','创意','直觉','消息'], meaningUpright: '创意灵感，情感消息，直觉敏锐。', meaningReversed: '情感不成熟，创意受阻，坏消息。' },
+  { id: 47, name: '圣杯骑士', nameEn: 'Knight of Cups', arcana: 'minor', suit: 'cups', number: 12, keywords: ['浪漫','追求','魅力','理想'], meaningUpright: '浪漫追求，理想主义，魅力迷人。', meaningReversed: '虚幻承诺，情感欺骗，不切实际。' },
+  { id: 48, name: '圣杯皇后', nameEn: 'Queen of Cups', arcana: 'minor', suit: 'cups', number: 13, keywords: ['同理','直觉','关怀','情感'], meaningUpright: '善解人意，情感深刻，直觉准确。', meaningReversed: '情绪化，过度依赖，失去边界。' },
+  { id: 49, name: '圣杯国王', nameEn: 'King of Cups',  arcana: 'minor', suit: 'cups', number: 14, keywords: ['成熟','包容','冷静','智慧'], meaningUpright: '情感成熟，包容大度，沉着冷静。', meaningReversed: '情绪失控，操纵，冷漠无情。' },
+  // === 宝剑 ===
+  { id: 50, name: '宝剑一', nameEn: 'Ace of Swords',    arcana: 'minor', suit: 'swords', number: 1,  keywords: ['真理','清晰','突破','正义'], meaningUpright: '拨云见日，思路清晰，公正决断。', meaningReversed: '混乱思维，错误判断，滥用权力。' },
+  { id: 51, name: '宝剑二', nameEn: 'Two of Swords',    arcana: 'minor', suit: 'swords', number: 2,  keywords: ['僵局','抉择','回避','平衡'], meaningUpright: '两难抉择，暂时回避，寻找平衡。', meaningReversed: '做出决定，信息过载，打破僵局。' },
+  { id: 52, name: '宝剑三', nameEn: 'Three of Swords',  arcana: 'minor', suit: 'swords', number: 3,  keywords: ['心痛','背叛','悲伤','疗愈'], meaningUpright: '心碎痛苦，遭受背叛，需要疗愈。', meaningReversed: '走出悲伤，重拾自我，愈合伤口。' },
+  { id: 53, name: '宝剑四', nameEn: 'Four of Swords',   arcana: 'minor', suit: 'swords', number: 4,  keywords: ['休息','恢复','冥想','休战'], meaningUpright: '休息恢复，沉淀思考，养精蓄锐。', meaningReversed: '恢复行动，重新出发，不安于室。' },
+  { id: 54, name: '宝剑五', nameEn: 'Five of Swords',   arcana: 'minor', suit: 'swords', number: 5,  keywords: ['冲突','失败','羞辱','空洞'], meaningUpright: '争吵冲突，赢而空虚，伤人伤己。', meaningReversed: '和解，放下争执，汲取教训。' },
+  { id: 55, name: '宝剑六', nameEn: 'Six of Swords',    arcana: 'minor', suit: 'swords', number: 6,  keywords: ['过渡','前行','疗愈','旅行'], meaningUpright: '渡过难关，向前迈进，渐入佳境。', meaningReversed: '无法放手，停滞不前，情绪包袱。' },
+  { id: 56, name: '宝剑七', nameEn: 'Seven of Swords',  arcana: 'minor', suit: 'swords', number: 7,  keywords: ['策略','欺骗','隐秘','机智'], meaningUpright: '暗中行动，巧妙策略，独辟蹊径。', meaningReversed: '骗局暴露，弄巧成拙，逃之夭夭。' },
+  { id: 57, name: '宝剑八', nameEn: 'Eight of Swords',  arcana: 'minor', suit: 'swords', number: 8,  keywords: ['束缚','限制','恐惧','无助'], meaningUpright: '自我设限，感到被困，需要突破。', meaningReversed: '挣脱束缚，找到出路，重获自由。' },
+  { id: 58, name: '宝剑九', nameEn: 'Nine of Swords',   arcana: 'minor', suit: 'swords', number: 9,  keywords: ['焦虑','噩梦','忧虑','失眠'], meaningUpright: '深夜忧虑，过度担心，内心折磨。', meaningReversed: '放下焦虑，找到希望，噩梦消散。' },
+  { id: 59, name: '宝剑十', nameEn: 'Ten of Swords',    arcana: 'minor', suit: 'swords', number: 10, keywords: ['终结','崩溃','背叛','触底'], meaningUpright: '彻底结束，触底反弹，黎明将至。', meaningReversed: '复苏重生，吸取教训，苦难结束。' },
+  { id: 60, name: '宝剑侍从', nameEn: 'Page of Swords',  arcana: 'minor', suit: 'swords', number: 11, keywords: ['思维','沟通','好奇','真相'], meaningUpright: '思维敏捷，追求真相，善于沟通。', meaningReversed: '闲言碎语，思维肤浅，泄密。' },
+  { id: 61, name: '宝剑骑士', nameEn: 'Knight of Swords', arcana: 'minor', suit: 'swords', number: 12, keywords: ['果断','行动','冲劲','变革'], meaningUpright: '果断出击，雷厉风行，突破困境。', meaningReversed: '鲁莽冲动，不计后果，适得其反。' },
+  { id: 62, name: '宝剑皇后', nameEn: 'Queen of Swords', arcana: 'minor', suit: 'swords', number: 13, keywords: ['理性','独立','经验','敏锐'], meaningUpright: '理性思考，独立判断，经验丰富。', meaningReversed: '冷漠刻薄，偏见，封闭内心。' },
+  { id: 63, name: '宝剑国王', nameEn: 'King of Swords',  arcana: 'minor', suit: 'swords', number: 14, keywords: ['权威','分析','公正','纪律'], meaningUpright: '明辨是非，公正权威，思维清晰。', meaningReversed: '滥用权威，独裁，判断失当。' },
+  // === 星币 ===
+  { id: 64, name: '星币一', nameEn: 'Ace of Pentacles', arcana: 'minor', suit: 'pentacles', number: 1,  keywords: ['机会','财富','稳固','新开始'], meaningUpright: '新的财源，实际机会，物质丰盛。', meaningReversed: '错失良机，财务问题，不稳。' },
+  { id: 65, name: '星币二', nameEn: 'Two of Pentacles', arcana: 'minor', suit: 'pentacles', number: 2,  keywords: ['平衡','适应','弹性','多任务'], meaningUpright: '灵活变通，平衡多方，适应变化。', meaningReversed: '失衡，力不从心，财务混乱。' },
+  { id: 66, name: '星币三', nameEn: 'Three of Pentacles', arcana: 'minor', suit: 'pentacles', number: 3,  keywords: ['合作','技艺','规划','建设'], meaningUpright: '团队合作，精益求精，蓝图初现。', meaningReversed: '缺乏合作，粗制滥造，各自为政。' },
+  { id: 67, name: '星币四', nameEn: 'Four of Pentacles', arcana: 'minor', suit: 'pentacles', number: 4,  keywords: ['守财','控制','稳定','囤积'], meaningUpright: '精打细算，稳固持有，谨慎保守。', meaningReversed: '吝啬过度，放手共享，财务开放。' },
+  { id: 68, name: '星币五', nameEn: 'Five of Pentacles', arcana: 'minor', suit: 'pentacles', number: 5,  keywords: ['匮乏','困难','孤立','信仰'], meaningUpright: '物质困难，感到孤立，需要求助。', meaningReversed: '走出困境，找到出路，重拾希望。' },
+  { id: 69, name: '星币六', nameEn: 'Six of Pentacles', arcana: 'minor', suit: 'pentacles', number: 6,  keywords: ['给予','获得','慷慨','平衡'], meaningUpright: '慷慨解囊，有舍有得，公平分配。', meaningReversed: '施舍心态，不平，吝啬拒绝。' },
+  { id: 70, name: '星币七', nameEn: 'Seven of Pentacles', arcana: 'minor', suit: 'pentacles', number: 7,  keywords: ['评估','耐心','投资','收获'], meaningUpright: '耐心等待，评估进展，即将收获。', meaningReversed: '焦虑失望，投资失利，功亏一篑。' },
+  { id: 71, name: '星币八', nameEn: 'Eight of Pentacles', arcana: 'minor', suit: 'pentacles', number: 8,  keywords: ['勤奋','技艺','专注','精进'], meaningUpright: '勤奋工作，磨练技艺，精益求精。', meaningReversed: '工作乏味，缺乏动力，粗制滥造。' },
+  { id: 72, name: '星币九', nameEn: 'Nine of Pentacles', arcana: 'minor', suit: 'pentacles', number: 9,  keywords: ['独立','富足','优雅','成果'], meaningUpright: '自给自足，优雅富足，享受成果。', meaningReversed: '过度消费，财务不稳，表面富足。' },
+  { id: 73, name: '星币十', nameEn: 'Ten of Pentacles', arcana: 'minor', suit: 'pentacles', number: 10, keywords: ['传承','家业','富足','永恒'], meaningUpright: '家业传承，财富稳固，代代相传。', meaningReversed: '家族纷争，遗产问题，财务危机。' },
+  { id: 74, name: '星币侍从', nameEn: 'Page of Pentacles', arcana: 'minor', suit: 'pentacles', number: 11, keywords: ['学习','务实','目标','起步'], meaningUpright: '踏实学习，务实起步，目标明确。', meaningReversed: '学习懈怠，缺乏目标，好高骛远。' },
+  { id: 75, name: '星币骑士', nameEn: 'Knight of Pentacles', arcana: 'minor', suit: 'pentacles', number: 12, keywords: ['勤奋','责任','耐心','效率'], meaningUpright: '脚踏实地，责任心强，耐心坚持。', meaningReversed: '懒散停滞，缺乏责任，一成不变。' },
+  { id: 76, name: '星币皇后', nameEn: 'Queen of Pentacles', arcana: 'minor', suit: 'pentacles', number: 13, keywords: ['滋养','务实','慷慨','温暖'], meaningUpright: '温暖滋养，务实可靠，生活富足。', meaningReversed: '过度依赖物质，忽视情感，疏于照顾。' },
+  { id: 77, name: '星币国王', nameEn: 'King of Pentacles', arcana: 'minor', suit: 'pentacles', number: 14, keywords: ['财富','稳重','成功','务实'], meaningUpright: '事业有成，稳重可靠，财富自由。', meaningReversed: '贪婪，守财奴，唯利是图。' },
+]
+
+export function shuffleDeck(): TarotCard[] {
+  const deck = [...ALL_TAROT_CARDS]
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[deck[i], deck[j]] = [deck[j], deck[i]]
+  }
+  return deck
+}
