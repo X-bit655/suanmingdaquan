@@ -1,0 +1,80 @@
+// ===== 算命大全 - 新中式国风设计 Token =====
+
+:root {
+  // === 宣纸/墨色体系 ===
+  --ink-bg:             #F6F1E6;
+  --ink-paper:          #FFFAF0;
+  --ink-text:           #201C18;
+  --ink-text-light:     #5C5648;
+  --ink-text-muted:     #8B8678;
+
+  // === 朱砂体系（主 CTA / 印章 / 关键标记）===
+  --ink-cinnabar:       #B64232;
+  --ink-cinnabar-light: #D4A09A;
+  --ink-cinnabar-dark:  #8B2A1E;
+
+  // === 金体系（高级强调 / 边框 / 装饰）===
+  --ink-gold:           #C8A65A;
+  --ink-gold-light:     #E0D0A0;
+  --ink-gold-dark:      #9A7B3A;
+
+  // === 靛蓝体系（链接 / 深度 / 辅助色）===
+  --ink-indigo:         #2F536F;
+  --ink-indigo-light:   #5A7F9A;
+
+  // === 玉绿体系（积极指标 / 自然元素）===
+  --ink-jade:           #5C7F67;
+  --ink-jade-light:     #8DAD96;
+
+  // === 赭石体系（大地色 / 补色）===
+  --ink-ochre:          #B78642;
+  --ink-ochre-light:    #D4B87A;
+
+  // === 表面层级 ===
+  --ink-surface:          var(--ink-paper);
+  --ink-surface-elevated: #FFFBF5;
+  --ink-surface-inset:    #F0EBE0;
+
+  // === 边框 ===
+  --ink-border:         #D4CFC2;
+  --ink-border-light:   #E5E0D5;
+
+  // === 字体 ===
+  --font-primary:  'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-seal:     'Noto Serif SC', 'Source Han Serif SC', 'SimSun', serif;
+  --font-display:  'STKaiti', 'KaiTi', '楷体', serif;
+
+  // === 字号（基于 750px 设计稿的 rpx）===
+  --font-xs:    20rpx;
+  --font-sm:    24rpx;
+  --font-base:  28rpx;
+  --font-lg:    32rpx;
+  --font-xl:    36rpx;
+  --font-2xl:   44rpx;
+  --font-3xl:   56rpx;
+
+  // === 间距（8rpx 基础网格）===
+  --space-1:  8rpx;
+  --space-2:  16rpx;
+  --space-3:  24rpx;
+  --space-4:  32rpx;
+  --space-5:  40rpx;
+  --space-6:  48rpx;
+  --space-8:  64rpx;
+  --space-10: 80rpx;
+
+  // === 圆角 ===
+  --radius-sm:   4rpx;
+  --radius-md:   8rpx;
+  --radius-lg:   16rpx;
+  --radius-xl:   24rpx;
+  --radius-seal: 4rpx 16rpx 4rpx 16rpx;
+
+  // === 阴影（水墨晕染风格）===
+  --shadow-ink:          0 4rpx 20rpx rgba(32, 28, 24, 0.08);
+  --shadow-ink-elevated: 0 8rpx 40rpx rgba(32, 28, 24, 0.12);
+  --shadow-gold:         0 2rpx 12rpx rgba(200, 166, 90, 0.2);
+
+  // === 过渡 ===
+  --transition-ink: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

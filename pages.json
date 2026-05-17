@@ -1,0 +1,34 @@
+{
+  "easycom": {
+    "autoscan": true,
+    "custom": {
+      "^Ink(.*)": "@/components/ink/Ink$1.vue"
+    }
+  },
+  "pages": [
+    { "path": "pages/index/index", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/fortune/bazi", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/fortune/zhouyi", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/fortune/ziwei", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/fortune/astrology", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/fortune/tarot", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/history/index", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/profile/index", "style": { "navigationStyle": "custom" } }
+  ],
+  "tabBar": {
+    "color": "#8B8678",
+    "selectedColor": "#B64232",
+    "backgroundColor": "#FFFAF0",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页" },
+      { "pagePath": "pages/history/index", "text": "历史" },
+      { "pagePath": "pages/profile/index", "text": "我的" }
+    ]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#FFFAF0",
+    "backgroundColor": "#F6F1E6"
+  }
+}

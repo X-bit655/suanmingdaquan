@@ -1,0 +1,11 @@
+@import './theme/tokens.scss';
+
+// uni-app 内置变量覆盖
+$uni-color-primary: var(--ink-cinnabar);
+$uni-color-success: var(--ink-jade);
+$uni-color-warning: var(--ink-ochre);
+$uni-color-error: var(--ink-cinnabar-dark);
+$uni-bg-color: var(--ink-bg);
+$uni-text-color: var(--ink-text);
+$uni-text-color-grey: var(--ink-text-light);
+$uni-text-color-placeholder: var(--ink-text-muted);
