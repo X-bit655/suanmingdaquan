@@ -5,7 +5,8 @@
   "scripts": {
     "dev:mp-weixin": "uni -p mp-weixin",
     "build:mp-weixin": "uni build -p mp-weixin",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@dcloudio/uni-app": "^3.0.0",
@@ -25,6 +26,7 @@
     "sass": "^1.71.0",
     "typescript": "^5.3.3",
     "vite": "^5.1.0",
-    "vue-tsc": "^2.0.0"
+    "vue-tsc": "^2.0.0",
+    "vitest": "^4.1.6"
   }
 }
