@@ -2,7 +2,8 @@
   "easycom": {
     "autoscan": true,
     "custom": {
-      "^Ink(.*)": "@/components/ink/Ink$1.vue"
+      "^Ink(.*)": "@/components/ink/Ink$1.vue",
+      "^PageShell$": "@/components/layout/PageShell.vue"
     }
   },
   "pages": [

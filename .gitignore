@@ -4,5 +4,7 @@ dist/
 .env
 .env.local
 *.log
+project.config.json
+project.private.config.json
 .DS_Store
 Thumbs.db

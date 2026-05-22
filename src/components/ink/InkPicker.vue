@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 defineProps<{ label: string; value: string; placeholder?: string }>()
 const emit = defineEmits<{ 'update:value': [value: string]; click: [] }>()
 </script>

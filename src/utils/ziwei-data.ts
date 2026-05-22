@@ -23,6 +23,7 @@ export const SI_HUA_STARS = ['化禄', '化权', '化科', '化忌']
 
 /** 纳音五行局 */
 export function getWuxingJu(yearStem: string, yearBranch: string): string {
+  const key = `${yearStem}${yearBranch}`
   const map: Record<string, string> = {
     '甲子': '金四局','乙丑': '金四局','丙寅': '火六局','丁卯': '火六局','戊辰': '木三局','己巳': '木三局',
     '庚午': '土五局','辛未': '土五局','壬申': '金四局','癸酉': '金四局','甲戌': '火六局','乙亥': '火六局',

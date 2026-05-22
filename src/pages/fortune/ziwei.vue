@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 import { ref, computed } from 'vue'
 import { Gender, CalendarType, FortuneMethod } from '@/types/fortune'
 import type { ZiWeiInput, ZiWeiCalculatedData } from '@/types/ziwei'
@@ -9,27 +9,32 @@ const birthYear = ref(1990); const birthMonth = ref(1); const birthDay = ref(1);
 const gender = ref<Gender>(Gender.Male); const calendarType = ref<CalendarType>(CalendarType.Solar)
 const input = computed<ZiWeiInput>(() => ({ birthYear: birthYear.value, birthMonth: birthMonth.value, birthDay: birthDay.value, birthHour: birthHour.value, gender: gender.value, calendarType: calendarType.value }))
 const { state, result, error, startFortune, reset } = useFortune<ZiWeiInput, ZiWeiCalculatedData>(FortuneMethod.ZiWei)
+function goBack() { uni.navigateBack() }
 function handleSubmit() { startFortune(input.value, calculateZiWei) }
 </script>
 <template>
-  <PageContainer>
-    <InkPageHeader title="紫微斗数" subtitle="星命预测" showBack @back="uni.navigateBack()" />
+  <PageShell>
+    <InkPageHeader title="紫微斗数" subtitle="星命预测" showBack @back="goBack" />
     <view v-if="state !== 'success'" class="form-area">
-      <view class="form-row"><text class="form-label">出生年</text><input class="form-input" v-model.number="birthYear" type="number" /></view>
-      <view class="form-row"><text class="form-label">出生月</text><input class="form-input" v-model.number="birthMonth" type="number" /></view>
-      <view class="form-row"><text class="form-label">出生日</text><input class="form-input" v-model.number="birthDay" type="number" /></view>
-      <view class="form-row"><text class="form-label">时辰(0-23)</text><input class="form-input" v-model.number="birthHour" type="number" /></view>
-      <view class="form-row">
-        <InkTag :selected="gender === 'male'" @click="gender = Gender.Male">男</InkTag>
-        <InkTag :selected="gender === 'female'" @click="gender = Gender.Female">女</InkTag>
-      </view>
+      <InkCard elevated>
+        <view class="form-grid">
+          <view class="field"><text class="form-label">出生年</text><input class="form-input" v-model.number="birthYear" type="number" /></view>
+          <view class="field"><text class="form-label">出生月</text><input class="form-input" v-model.number="birthMonth" type="number" /></view>
+          <view class="field"><text class="form-label">出生日</text><input class="form-input" v-model.number="birthDay" type="number" /></view>
+          <view class="field"><text class="form-label">时辰</text><input class="form-input" v-model.number="birthHour" type="number" /></view>
+        </view>
+        <view class="form-row">
+          <InkTag :selected="gender === 'male'" @click="gender = Gender.Male">男</InkTag>
+          <InkTag :selected="gender === 'female'" @click="gender = Gender.Female">女</InkTag>
+        </view>
+      </InkCard>
       <InkButton block :loading="state === 'loading'" @click="handleSubmit">开始排盘</InkButton>
-      <InkError v-if="state === 'error'" :message="error || undefined" showRetry @retry="handleSubmit" />
     </view>
     <view v-else-if="result" class="result-area">
+      <view v-if="error && !result.interpretation" class="local-note">AI 解读暂不可用，以下为本地排盘结果。</view>
       <InkCard elevated>
         <text class="section-title">命宫：{{ result.calculatedData.palaces[result.calculatedData.mingGong]?.name }}</text>
-        <text>身宫：{{ result.calculatedData.palaces[result.calculatedData.shenGong]?.name }}</text>
+        <text class="result-text">身宫：{{ result.calculatedData.palaces[result.calculatedData.shenGong]?.name }}</text>
       </InkCard>
       <InkCard elevated>
         <text class="section-title">四化</text>
@@ -45,14 +50,18 @@ function handleSubmit() { startFortune(input.value, calculateZiWei) }
       <InkButton block type="secondary" @click="reset">重新测算</InkButton>
     </view>
     <InkLoading v-if="state === 'loading'" text="AI正在为您排盘解读..." />
-  </PageContainer>
+  </PageShell>
 </template>
 <style lang="scss" scoped>
 .form-area { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4); }
-.form-row { display: flex; align-items: center; gap: var(--space-3); }
-.form-label { font-size: var(--font-base); color: var(--ink-text); min-width: 120rpx; }
-.form-input { flex:1; padding: var(--space-3); background: var(--ink-surface-inset); border-radius: var(--radius-md); font-size: var(--font-base); }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.form-row { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-4); }
+.form-label { font-size: var(--font-xs); color: var(--ink-text-muted); }
+.form-input { width:100%; min-height:82rpx; padding: 0 var(--space-3); background: var(--ink-surface-inset); border-radius: var(--radius-md); font-size: var(--font-base); }
 .result-area { padding: var(--space-4); display: flex; flex-direction: column; gap: var(--space-4); }
+.local-note { padding: var(--space-3); border-radius: var(--radius-md); background: rgba(200, 166, 90, 0.16); color: var(--ink-gold-dark); font-size: var(--font-xs); }
 .section-title { font-family: var(--font-seal); font-size: var(--font-lg); color: var(--ink-gold); margin-bottom: var(--space-2); }
+.result-text { display: block; font-size: var(--font-base); color: var(--ink-text); margin-top: var(--space-2); }
 .interp-text { font-size: var(--font-base); color: var(--ink-text); line-height: 1.8; }
 </style>

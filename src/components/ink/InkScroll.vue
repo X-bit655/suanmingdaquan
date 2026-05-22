@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 </script>
 <template>
   <view class="ink-scroll">

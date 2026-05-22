@@ -18,22 +18,23 @@
 算命大全/
 ├── src/
 │   ├── components/ink/     # Ink 新中式组件库 (11个)
-│   ├── components/layout/  # PageContainer 通用布局
+│   ├── components/layout/  # PageShell 通用布局
 │   ├── hooks/              # useFortune, useSafeArea
 │   ├── services/           # cloudbase.ts, fortune.ts
 │   ├── stores/             # app.ts, fortune.ts (Pinia)
 │   ├── theme/tokens.scss   # 设计 token
 │   ├── types/              # 完整类型定义 (6个模块)
-│   └── utils/              # 纯计算引擎 (无副作用)
-├── pages/fortune/          # 5个算命页面
-├── pages/history/          # 测算历史
-├── pages/index/            # 首页 (方法选择)
-├── pages/profile/          # 个人中心
+│   ├── utils/              # 纯计算引擎 (无副作用)
+│   ├── pages/fortune/      # 5个算命页面
+│   ├── pages/history/      # 测算历史
+│   ├── pages/index/        # 首页 (方法选择)
+│   ├── pages/profile/      # 个人中心
+│   ├── manifest.json       # uni-app配置 (mp-weixin)
+│   └── pages.json          # 页面路由 + tabBar
 ├── cloudbase/functions/fortune/  # 云函数
 │   ├── prompts/            # 5种AI prompt模板 + 系统prompt
 │   └── utils/              # DeepSeek客户端 + 响应解析
-├── manifest.json           # uni-app配置 (mp-weixin)
-├── pages.json              # 页面路由 + tabBar
+├── vite.config.ts          # uni-app Vite配置
 └── package.json
 ```
 
@@ -41,11 +42,11 @@
 
 | 方法 | Method枚举 | 页面 | 计算引擎 | AI Prompt |
 |------|-----------|------|---------|-----------|
-| 八字命理 | `bazi` | pages/fortune/bazi.vue | `bazi-calc.ts` + `ganzhi.ts` | `bazi.ts` |
-| 周易占卜 | `zhouyi` | pages/fortune/zhouyi.vue | `zhouyi-calc.ts` + `zhouyi-data.ts` | `zhouyi.ts` |
-| 紫微斗数 | `ziwei` | pages/fortune/ziwei.vue | `ziwei-calc.ts` + `ziwei-data.ts` | `ziwei.ts` |
-| 星座命盘 | `astrology` | pages/fortune/astrology.vue | `astrology-calc.ts` | `astrology.ts` |
-| 塔罗占卜 | `tarot` | pages/fortune/tarot.vue | `tarot-data.ts` | `tarot.ts` |
+| 八字命理 | `bazi` | src/pages/fortune/bazi.vue | `bazi-calc.ts` + `ganzhi.ts` | `bazi.ts` |
+| 周易占卜 | `zhouyi` | src/pages/fortune/zhouyi.vue | `zhouyi-calc.ts` + `zhouyi-data.ts` | `zhouyi.ts` |
+| 紫微斗数 | `ziwei` | src/pages/fortune/ziwei.vue | `ziwei-calc.ts` + `ziwei-data.ts` | `ziwei.ts` |
+| 星座命盘 | `astrology` | src/pages/fortune/astrology.vue | `astrology-calc.ts` | `astrology.ts` |
+| 塔罗占卜 | `tarot` | src/pages/fortune/tarot.vue | `tarot-data.ts` | `tarot.ts` |
 
 ## 数据流架构
 
@@ -73,6 +74,7 @@ Ink 组件遵循以下模式：
 - `InkEmpty`: 空状态占位
 - `InkPicker`: 选择器
 - `InkScroll`: 滚动容器
+- `PageShell`: 页面根布局，避免使用 PageContainer 以免和微信原生 `page-container` 冲突
 
 ## 类型系统
 

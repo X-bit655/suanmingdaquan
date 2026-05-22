@@ -39,11 +39,14 @@
 │   │   └── ganzhi.ts   # 天干地支计算工具
 │   ├── theme/
 │   │   └── tokens.scss # 设计 Token
+│   ├── components/     # Ink 组件和 PageShell 布局
+│   ├── pages/          # 页面源码
+│   ├── pages.json      # 页面配置
+│   ├── manifest.json   # 应用配置
 │   ├── App.vue         # 应用入口
 │   ├── main.ts         # 主入口
 │   └── uni.scss        # uni-app 变量覆盖
-├── pages.json          # 页面配置
-├── manifest.json       # 应用配置
+├── vite.config.ts      # uni-app Vite 配置
 ├── tsconfig.json       # TypeScript 配置
 └── package.json        # 依赖管理
 ```
@@ -63,7 +66,7 @@ npm install
 npm run dev:mp-weixin
 ```
 
-> 打开微信开发者工具，导入项目根目录，即可预览。
+> 打开微信开发者工具，导入 `dist/dev/mp-weixin`，即可预览开发构建。
 
 ### 构建
 

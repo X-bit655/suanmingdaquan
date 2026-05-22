@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 defineProps<{ message?: string; showRetry?: boolean }>()
 const emit = defineEmits<{ retry: [] }>()
 </script>

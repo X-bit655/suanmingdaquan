@@ -20,7 +20,7 @@ export const useFortuneStore = defineStore('fortune', () => {
     const item: FortuneHistoryItem = {
       id: `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`,
       method: result.method, timestamp: result.timestamp,
-      summary: result.interpretation?.summary || '无摘要',
+      summary: result.interpretation?.summary || '本地测算结果',
       score: result.interpretation?.score,
     }
     history.value.unshift(item)

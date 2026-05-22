@@ -1,4 +1,4 @@
-<script setup lang="ts">
+﻿<script setup lang="ts">
 defineProps<{ modelValue: string; placeholder?: string; type?: string; multiline?: boolean }>()
 const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
 </script>

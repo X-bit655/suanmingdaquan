@@ -13,6 +13,13 @@ export function useFortune<TInput, TCalcData>(method: FortuneMethod) {
     state.value = FortuneFlowState.Calculating
     store.setFlowState(FortuneFlowState.Calculating)
     const calculatedData = calcFn(input)
+    const localResult: FortuneResult<TCalcData> = {
+      method,
+      input: input as any,
+      calculatedData,
+      interpretation: null,
+      timestamp: Date.now(),
+    }
     state.value = FortuneFlowState.Loading
     store.setFlowState(FortuneFlowState.Loading)
     try {
@@ -31,11 +38,13 @@ export function useFortune<TInput, TCalcData>(method: FortuneMethod) {
       state.value = FortuneFlowState.Success
       store.setFlowState(FortuneFlowState.Success)
     } catch (e: any) {
-      error.value = e.message || '测算失败'
+      error.value = e.message || 'AI 解读暂不可用，已展示本地测算结果'
       store.setError(error.value)
-      result.value = { method, timestamp: Date.now(), input: input as any, calculatedData, interpretation: null }
-      state.value = FortuneFlowState.Error
-      store.setFlowState(FortuneFlowState.Error)
+      result.value = localResult
+      store.setResult(localResult as any)
+      store.saveToHistory(localResult as any)
+      state.value = FortuneFlowState.Success
+      store.setFlowState(FortuneFlowState.Success)
     }
   }
   function reset() {

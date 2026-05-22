@@ -2,8 +2,8 @@
 
 :root {
   // === 宣纸/墨色体系 ===
-  --ink-bg:             #F6F1E6;
-  --ink-paper:          #FFFAF0;
+  --ink-bg:             #F4EFE4;
+  --ink-paper:          #FFF9ED;
   --ink-text:           #201C18;
   --ink-text-light:     #5C5648;
   --ink-text-muted:     #8B8678;
@@ -31,9 +31,11 @@
   --ink-ochre-light:    #D4B87A;
 
   // === 表面层级 ===
-  --ink-surface:          var(--ink-paper);
-  --ink-surface-elevated: #FFFBF5;
-  --ink-surface-inset:    #F0EBE0;
+  --ink-surface:          rgba(255, 249, 237, 0.94);
+  --ink-surface-elevated: #FFFDF7;
+  --ink-surface-inset:    #EEE6D8;
+  --ink-night:            #252D35;
+  --ink-night-soft:       #334556;
 
   // === 边框 ===
   --ink-border:         #D4CFC2;
@@ -66,13 +68,13 @@
   // === 圆角 ===
   --radius-sm:   4rpx;
   --radius-md:   8rpx;
-  --radius-lg:   16rpx;
-  --radius-xl:   24rpx;
+  --radius-lg:   14rpx;
+  --radius-xl:   18rpx;
   --radius-seal: 4rpx 16rpx 4rpx 16rpx;
 
   // === 阴影（水墨晕染风格）===
-  --shadow-ink:          0 4rpx 20rpx rgba(32, 28, 24, 0.08);
-  --shadow-ink-elevated: 0 8rpx 40rpx rgba(32, 28, 24, 0.12);
+  --shadow-ink:          0 8rpx 28rpx rgba(32, 28, 24, 0.08);
+  --shadow-ink-elevated: 0 18rpx 56rpx rgba(32, 28, 24, 0.14);
   --shadow-gold:         0 2rpx 12rpx rgba(200, 166, 90, 0.2);
 
   // === 过渡 ===
