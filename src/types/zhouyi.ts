@@ -27,7 +27,7 @@ export interface Hexagram {
 
 export interface ZhouYiInput {
   question: string
-  method: 'coin' | 'random'
+  method: 'coin' | 'random' | 'time'
 }
 
 export interface ZhouYiCalculatedData {

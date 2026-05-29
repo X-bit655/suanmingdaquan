@@ -2,7 +2,14 @@ import { describe, expect, it, vi, afterEach } from 'vitest'
 import { calculateBazi } from '@/utils/bazi-calc'
 import { calculateZhouYi } from '@/utils/zhouyi-calc'
 import { calculateZiWei } from '@/utils/ziwei-calc'
+import { calculateAstrology, ZODIAC_SIGNS } from '@/utils/astrology-calc'
 import { ALL_TAROT_CARDS } from '@/utils/tarot-data'
+import { solarToLunar, getYearGanzhi } from '@/utils/calendar'
+import {
+  HEAVENLY_STEMS, EARTHLY_BRANCHES, SHI_CHEN, HIDDEN_STEMS,
+  STEM_WUXING, BRANCH_WUXING, ZODIAC, WUXING,
+  getMonthStemIndex, getHourStemIndex, getShiChenIndex,
+} from '@/utils/ganzhi'
 import { CalendarType, Gender } from '@/types/fortune'
 
 describe('fortune calculators', () => {
@@ -86,5 +93,155 @@ describe('tarot card data', () => {
       swords: 14,
       pentacles: 14,
     })
+  })
+})
+
+describe('astrology calculator', () => {
+  it('computes correct sun sign for known dates', () => {
+    const capricorn = calculateAstrology({ birthYear: 1990, birthMonth: 1, birthDay: 15, birthHour: 12, birthMinute: 0, city: '北京' })
+    expect(capricorn.sunSign).toBe('摩羯座')
+
+    const aquarius = calculateAstrology({ birthYear: 1990, birthMonth: 1, birthDay: 21, birthHour: 12, birthMinute: 0, city: '北京' })
+    expect(aquarius.sunSign).toBe('水瓶座')
+
+    const aries = calculateAstrology({ birthYear: 1990, birthMonth: 3, birthDay: 22, birthHour: 12, birthMinute: 0, city: '北京' })
+    expect(aries.sunSign).toBe('白羊座')
+
+    const leo = calculateAstrology({ birthYear: 1990, birthMonth: 8, birthDay: 1, birthHour: 12, birthMinute: 0, city: '北京' })
+    expect(leo.sunSign).toBe('狮子座')
+  })
+
+  it('produces deterministic output for same input', () => {
+    const input = { birthYear: 1990, birthMonth: 5, birthDay: 10, birthHour: 10, birthMinute: 30, city: '上海' }
+    const r1 = calculateAstrology(input)
+    const r2 = calculateAstrology(input)
+    expect(r1.sunSign).toBe(r2.sunSign)
+    expect(r1.moonSign).toBe(r2.moonSign)
+    expect(r1.risingSign).toBe(r2.risingSign)
+  })
+
+  it('returns all 12 zodiac signs in order', () => {
+    expect(ZODIAC_SIGNS).toEqual([
+      '白羊座', '金牛座', '双子座', '巨蟹座', '狮子座', '处女座',
+      '天秤座', '天蝎座', '射手座', '摩羯座', '水瓶座', '双鱼座',
+    ])
+  })
+
+  it('returns valid moon sign and rising sign', () => {
+    const result = calculateAstrology({ birthYear: 1995, birthMonth: 6, birthDay: 15, birthHour: 8, birthMinute: 0, city: '北京' })
+    expect(ZODIAC_SIGNS).toContain(result.moonSign)
+    expect(ZODIAC_SIGNS).toContain(result.risingSign)
+  })
+
+  it('returns 10 planets with valid sign and house', () => {
+    const result = calculateAstrology({ birthYear: 2000, birthMonth: 3, birthDay: 10, birthHour: 14, birthMinute: 0, city: '广州' })
+    expect(result.planets).toHaveLength(10)
+    result.planets.forEach(p => {
+      expect(ZODIAC_SIGNS).toContain(p.sign)
+      expect(p.house).toBeGreaterThanOrEqual(1)
+      expect(p.house).toBeLessThanOrEqual(12)
+      expect(p.degree).toBeGreaterThanOrEqual(0)
+      expect(p.degree).toBeLessThan(30)
+    })
+  })
+
+  it('returns 12 houses all in order', () => {
+    const result = calculateAstrology({ birthYear: 2000, birthMonth: 1, birthDay: 1, birthHour: 0, birthMinute: 0, city: '北京' })
+    expect(result.houses).toHaveLength(12)
+    result.houses.forEach(h => expect(ZODIAC_SIGNS).toContain(h))
+  })
+})
+
+describe('calendar utilities', () => {
+  it('returns lunar date within valid range', () => {
+    const lunar = solarToLunar(2024, 6, 1)
+    expect(lunar.year).toBeGreaterThanOrEqual(1900)
+    expect(lunar.month).toBeGreaterThanOrEqual(1)
+    expect(lunar.month).toBeLessThanOrEqual(12)
+    expect(lunar.day).toBeGreaterThanOrEqual(1)
+    expect(lunar.day).toBeLessThanOrEqual(30)
+  })
+
+  it('returns year ganzhi for known years', () => {
+    expect(getYearGanzhi(2024).ganzhi).toBe('甲辰')
+    expect(getYearGanzhi(2025).ganzhi).toBe('乙巳')
+  })
+
+  it('cycles ganzhi correctly every 60 years', () => {
+    expect(getYearGanzhi(1984).ganzhi).toBe(getYearGanzhi(2044).ganzhi)
+  })
+
+  it('returns fallback for years outside 1900-2100 range', () => {
+    const result = solarToLunar(1800, 1, 1)
+    expect(result.year).toBe(1800)
+    expect(result.month).toBe(1)
+    expect(result.day).toBe(1)
+  })
+})
+
+describe('ganzhi (heavenly stems & earthly branches)', () => {
+  it('has complete 10 heavenly stems', () => {
+    expect(HEAVENLY_STEMS).toHaveLength(10)
+    expect(HEAVENLY_STEMS.join('')).toBe('甲乙丙丁戊己庚辛壬癸')
+  })
+
+  it('has complete 12 earthly branches', () => {
+    expect(EARTHLY_BRANCHES).toHaveLength(12)
+    expect(EARTHLY_BRANCHES.join('')).toBe('子丑寅卯辰巳午未申酉戌亥')
+  })
+
+  it('maps all 12 sichen to hour ranges', () => {
+    expect(SHI_CHEN).toHaveLength(12)
+    expect(SHI_CHEN[0][0]).toBe('子时')
+  })
+
+  it('getShiChenIndex maps hours correctly', () => {
+    expect(getShiChenIndex(0)).toBe(0)
+    expect(getShiChenIndex(23)).toBe(0)
+    expect(getShiChenIndex(12)).toBe(6)
+    expect(getShiChenIndex(7)).toBe(4)
+    expect(getShiChenIndex(15)).toBe(8)
+  })
+
+  it('all 12 branches have hidden stems', () => {
+    EARTHLY_BRANCHES.forEach(b => {
+      expect(HIDDEN_STEMS[b]).toBeDefined()
+      expect(HIDDEN_STEMS[b].length).toBeGreaterThan(0)
+    })
+  })
+
+  it('wuxing mappings cover all stems and branches', () => {
+    HEAVENLY_STEMS.forEach(s => expect(STEM_WUXING[s]).toBeDefined())
+    EARTHLY_BRANCHES.forEach(b => expect(BRANCH_WUXING[b]).toBeDefined())
+  })
+
+  it('wuxing has exactly 5 elements', () => {
+    expect(WUXING).toEqual(['金', '木', '水', '火', '土'])
+  })
+
+  it('zodiac mapping has correct 12 animals', () => {
+    expect(ZODIAC).toEqual(['鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪'])
+  })
+
+  it('year ganzhi maps to correct zodiac', () => {
+    const gan = getYearGanzhi(2024)
+    const branchIdx = EARTHLY_BRANCHES.indexOf(gan.branch)
+    expect(ZODIAC[branchIdx]).toBe('龙')
+  })
+
+  it('getMonthStemIndex returns valid indices', () => {
+    for (let i = 0; i < 10; i++) {
+      const idx = getMonthStemIndex(i)
+      expect(idx).toBeGreaterThanOrEqual(0)
+      expect(idx).toBeLessThan(10)
+    }
+  })
+
+  it('getHourStemIndex returns valid indices', () => {
+    for (let i = 0; i < 10; i++) {
+      const idx = getHourStemIndex(i)
+      expect(idx).toBeGreaterThanOrEqual(0)
+      expect(idx).toBeLessThan(10)
+    }
   })
 })
