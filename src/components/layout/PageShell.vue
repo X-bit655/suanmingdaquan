@@ -11,9 +11,11 @@
 .page-shell {
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   background:
-    linear-gradient(180deg, rgba(255, 249, 237, 0.72) 0%, rgba(244, 239, 228, 0.96) 45%, rgba(244, 239, 228, 1) 100%);
+    radial-gradient(circle at 18% -4%, rgba(217, 174, 95, 0.2), transparent 34%),
+    radial-gradient(circle at 92% 8%, rgba(119, 134, 217, 0.16), transparent 32%),
+    linear-gradient(180deg, #101722 0%, var(--ink-bg) 46%, #080B11 100%);
   padding-bottom: var(--space-10);
   padding-bottom: env(safe-area-inset-bottom, var(--space-10));
 }

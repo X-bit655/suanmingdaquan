@@ -1,9 +1,9 @@
-import { describe, expect, it, vi, afterEach } from 'vitest'
+import { describe, expect, it, vi, afterEach, beforeEach } from 'vitest'
 import { calculateBazi } from '@/utils/bazi-calc'
 import { calculateZhouYi } from '@/utils/zhouyi-calc'
 import { calculateZiWei } from '@/utils/ziwei-calc'
 import { calculateAstrology, ZODIAC_SIGNS } from '@/utils/astrology-calc'
-import { ALL_TAROT_CARDS } from '@/utils/tarot-data'
+import { ALL_TAROT_CARDS, shuffleDeck } from '@/utils/tarot-data'
 import { solarToLunar, getYearGanzhi } from '@/utils/calendar'
 import {
   HEAVENLY_STEMS, EARTHLY_BRANCHES, SHI_CHEN, HIDDEN_STEMS,
@@ -243,5 +243,70 @@ describe('ganzhi (heavenly stems & earthly branches)', () => {
       expect(idx).toBeGreaterThanOrEqual(0)
       expect(idx).toBeLessThan(10)
     }
+  })
+})
+
+describe('bazi dayun reverse direction', () => {
+  it('generates reverse dayun for female born in yang year', () => {
+    const result = calculateBazi({
+      birthYear: 2024, birthMonth: 3, birthDay: 15, birthHour: 12,
+      gender: Gender.Female, calendarType: CalendarType.Solar,
+    })
+    expect(result.fortuneCycles.cycles.length).toBeGreaterThan(0)
+    // 2024 甲辰年为阳年，女性逆排
+    expect(result.fortuneCycles.cycles[0].ageRange).toBeDefined()
+  })
+})
+
+describe('zhouyi time-based divination', () => {
+  beforeEach(() => {
+    vi.useFakeTimers()
+    vi.setSystemTime(new Date(2024, 5, 15, 12, 0, 0))
+  })
+
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+
+  it('generates hexagram using time method', () => {
+    const result = calculateZhouYi({
+      method: 'time',
+      question: '事业前程',
+    })
+    expect(result.originalHexagram).toBeDefined()
+    expect(result.originalHexagram.id).toBeGreaterThanOrEqual(1)
+    expect(result.originalHexagram.id).toBeLessThanOrEqual(64)
+    expect(result.mutualHexagram).toBeDefined()
+  })
+
+  it('time method is deterministic for same input', () => {
+    const r1 = calculateZhouYi({ method: 'time', question: '事业' })
+    const r2 = calculateZhouYi({ method: 'time', question: '事业' })
+    expect(r1.originalHexagram.id).toBe(r2.originalHexagram.id)
+  })
+})
+
+describe('tarot shuffle', () => {
+  it('returns full deck of 78 unique cards', () => {
+    const deck = shuffleDeck()
+    expect(deck).toHaveLength(78)
+    const ids = new Set(deck.map(c => c.id))
+    expect(ids.size).toBe(78)
+  })
+
+  it('returns cards in different order from source', () => {
+    const deck1 = shuffleDeck()
+    const deck2 = shuffleDeck()
+    const sameOrder = deck1.every((c, i) => c.id === deck2[i]?.id)
+    expect(sameOrder).toBe(false)
+  })
+})
+
+describe('calendar leap year', () => {
+  it('handles leap year lunar conversion', () => {
+    const lunar = solarToLunar(2024, 2, 10)
+    expect(lunar.year).toBeGreaterThanOrEqual(1900)
+    expect(lunar.month).toBeGreaterThanOrEqual(1)
+    expect(lunar.day).toBeGreaterThanOrEqual(1)
   })
 })

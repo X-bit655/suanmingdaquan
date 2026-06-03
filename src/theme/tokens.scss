@@ -1,61 +1,57 @@
-// ===== 算命大全 - 新中式国风设计 Token =====
+// Premium dark fortune UI tokens.
 
 :root {
-  // === 宣纸/墨色体系 ===
-  --ink-bg:             #F4EFE4;
-  --ink-paper:          #FFF9ED;
-  --ink-text:           #201C18;
-  --ink-text-light:     #5C5648;
-  --ink-text-muted:     #8B8678;
+  // Base surfaces
+  --ink-bg:             #0B0F17;
+  --ink-paper:          #F8F2E7;
+  --ink-text:           #F7F1E8;
+  --ink-text-light:     #D3C6B4;
+  --ink-text-muted:     #9C9286;
 
-  // === 朱砂体系（主 CTA / 印章 / 关键标记）===
-  --ink-cinnabar:       #B64232;
-  --ink-cinnabar-light: #D4A09A;
-  --ink-cinnabar-dark:  #8B2A1E;
+  // Brand and semantic colors
+  --ink-cinnabar:       #D8664B;
+  --ink-cinnabar-light: #F08A68;
+  --ink-cinnabar-dark:  #A83C2F;
 
-  // === 金体系（高级强调 / 边框 / 装饰）===
-  --ink-gold:           #C8A65A;
-  --ink-gold-light:     #E0D0A0;
-  --ink-gold-dark:      #9A7B3A;
+  --ink-gold:           #D9AE5F;
+  --ink-gold-light:     #F1D79A;
+  --ink-gold-dark:      #A97828;
 
-  // === 靛蓝体系（链接 / 深度 / 辅助色）===
-  --ink-indigo:         #2F536F;
-  --ink-indigo-light:   #5A7F9A;
+  --ink-indigo:         #7786D9;
+  --ink-indigo-light:   #AEB8F0;
 
-  // === 玉绿体系（积极指标 / 自然元素）===
-  --ink-jade:           #5C7F67;
-  --ink-jade-light:     #8DAD96;
+  --ink-jade:           #5FC9A3;
+  --ink-jade-light:     #9DE7CC;
 
-  // === 赭石体系（大地色 / 补色）===
-  --ink-ochre:          #B78642;
-  --ink-ochre-light:    #D4B87A;
+  --ink-ochre:          #D9904F;
+  --ink-ochre-light:    #F1BC7E;
 
-  // === 表面层级 ===
-  --ink-surface:          rgba(255, 249, 237, 0.94);
-  --ink-surface-elevated: #FFFDF7;
-  --ink-surface-inset:    #EEE6D8;
-  --ink-night:            #252D35;
-  --ink-night-soft:       #334556;
+  // Layering
+  --ink-surface:          #151B25;
+  --ink-surface-elevated: #1B2330;
+  --ink-surface-inset:    #0F141D;
+  --ink-night:            #070A10;
+  --ink-night-soft:       #111824;
 
-  // === 边框 ===
-  --ink-border:         #D4CFC2;
-  --ink-border-light:   #E5E0D5;
+  // Lines
+  --ink-border:         rgba(241, 215, 154, 0.18);
+  --ink-border-light:   rgba(255, 255, 255, 0.08);
 
-  // === 字体 ===
-  --font-primary:  'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-  --font-seal:     'Noto Serif SC', 'Source Han Serif SC', 'SimSun', serif;
-  --font-display:  'STKaiti', 'KaiTi', '楷体', serif;
+  // Fonts
+  --font-primary:  -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+  --font-seal:     'Noto Serif SC', 'Source Han Serif SC', 'STSong', 'SimSun', serif;
+  --font-display:  -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
 
-  // === 字号（基于 750px 设计稿的 rpx）===
-  --font-xs:    20rpx;
-  --font-sm:    24rpx;
-  --font-base:  28rpx;
-  --font-lg:    32rpx;
-  --font-xl:    36rpx;
-  --font-2xl:   44rpx;
-  --font-3xl:   56rpx;
+  // Type scale
+  --font-xs:    22rpx;
+  --font-sm:    26rpx;
+  --font-base:  30rpx;
+  --font-lg:    34rpx;
+  --font-xl:    42rpx;
+  --font-2xl:   52rpx;
+  --font-3xl:   68rpx;
 
-  // === 间距（8rpx 基础网格）===
+  // Spacing
   --space-1:  8rpx;
   --space-2:  16rpx;
   --space-3:  24rpx;
@@ -65,18 +61,18 @@
   --space-8:  64rpx;
   --space-10: 80rpx;
 
-  // === 圆角 ===
-  --radius-sm:   4rpx;
-  --radius-md:   8rpx;
-  --radius-lg:   14rpx;
-  --radius-xl:   18rpx;
-  --radius-seal: 4rpx 16rpx 4rpx 16rpx;
+  // Radius
+  --radius-sm:   8rpx;
+  --radius-md:   16rpx;
+  --radius-lg:   24rpx;
+  --radius-xl:   36rpx;
+  --radius-seal: 6rpx;
 
-  // === 阴影（水墨晕染风格）===
-  --shadow-ink:          0 8rpx 28rpx rgba(32, 28, 24, 0.08);
-  --shadow-ink-elevated: 0 18rpx 56rpx rgba(32, 28, 24, 0.14);
-  --shadow-gold:         0 2rpx 12rpx rgba(200, 166, 90, 0.2);
+  // Shadows
+  --shadow-ink:          0 16rpx 46rpx rgba(0, 0, 0, 0.28);
+  --shadow-ink-elevated: 0 28rpx 86rpx rgba(0, 0, 0, 0.42);
+  --shadow-gold:         0 14rpx 34rpx rgba(217, 174, 95, 0.22);
+  --shadow-cinnabar:     0 18rpx 46rpx rgba(216, 102, 75, 0.26);
 
-  // === 过渡 ===
-  --transition-ink: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-ink: 0.22s cubic-bezier(0.2, 0, 0, 1);
 }

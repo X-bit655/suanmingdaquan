@@ -6,6 +6,10 @@ const appStore = useAppStore()
 
 onLaunch(() => {
   appStore.init()
+  // 初始化微信云开发
+  if (wx?.cloud) {
+    wx.cloud.init({ traceUser: true })
+  }
 })
 
 onShow(() => {

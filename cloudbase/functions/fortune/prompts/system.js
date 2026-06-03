@@ -21,4 +21,4 @@ function buildSystemPrompt() {
     '安全声明：所有解读仅供娱乐参考，涉及医疗、法律、重大投资决策请咨询专业人士。',
   ].join('\n')
 }
-exports.buildSystemPrompt = buildSystemPrompt;
+exports.buildSystemPrompt = buildSystemPrompt

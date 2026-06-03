@@ -17,9 +17,9 @@
     { "path": "pages/profile/index", "style": { "navigationStyle": "custom" } }
   ],
   "tabBar": {
-    "color": "#8B8678",
-    "selectedColor": "#B64232",
-    "backgroundColor": "#FFFAF0",
+    "color": "#9C9286",
+    "selectedColor": "#D9AE5F",
+    "backgroundColor": "#0B0F17",
     "borderStyle": "white",
     "list": [
       { "pagePath": "pages/index/index", "text": "首页" },
@@ -29,7 +29,7 @@
   },
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarBackgroundColor": "#FFFAF0",
-    "backgroundColor": "#F6F1E6"
+    "navigationBarBackgroundColor": "#0B0F17",
+    "backgroundColor": "#0B0F17"
   }
 }

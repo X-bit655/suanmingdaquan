@@ -4,8 +4,8 @@ function buildTarotPrompt(input, data) {
   const parts = [
     '请以资深塔罗解读师身份解读以下塔罗占卜：',
     '',
-    `【牌阵】${spreadName}`,
-    `【问题】${input.question || '未具体说明'}`,
+    '【牌阵】' + spreadName,
+    '【问题】' + (input.question || '未具体说明'),
     '',
     '【抽牌结果】',
   ]
@@ -13,9 +13,9 @@ function buildTarotPrompt(input, data) {
   for (const dc of data.cards) {
     const position = dc.isReversed ? '（逆位）' : '（正位）'
     const meaning = dc.isReversed ? dc.card.meaningReversed : dc.card.meaningUpright
-    parts.push(`${dc.position}：${dc.card.name}${dc.card.nameEn ? ' (' + dc.card.nameEn + ')' : ''} ${position}`)
-    parts.push(`  牌义：${meaning}`)
-    parts.push(`  关键词：${dc.card.keywords.join('、')}`)
+    parts.push(dc.position + '：' + dc.card.name + (dc.card.nameEn ? ' (' + dc.card.nameEn + ')' : '') + ' ' + position)
+    parts.push('  牌义：' + meaning)
+    parts.push('  关键词：' + dc.card.keywords.join('、'))
   }
 
   parts.push(
@@ -32,4 +32,4 @@ function buildTarotPrompt(input, data) {
 
   return parts.join('\n')
 }
-exports.buildTarotPrompt = buildTarotPrompt;
+exports.buildTarotPrompt = buildTarotPrompt

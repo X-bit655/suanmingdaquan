@@ -1,12 +1,4 @@
-interface ParsedResponse {
-  summary: string
-  analysis: string
-  advice: string
-  score: number
-  tags: string[]
-}
-
-function parseResponse(raw: string): ParsedResponse {
+function parseResponse(raw) {
   try {
     const p = JSON.parse(raw)
     return {
@@ -16,7 +8,7 @@ function parseResponse(raw: string): ParsedResponse {
       score: typeof p.score === 'number' ? Math.min(100, Math.max(1, Math.floor(p.score))) : 50,
       tags: Array.isArray(p.tags) ? p.tags : [],
     }
-  } catch {
+  } catch (e) {
     return { summary: '', analysis: raw, advice: '', score: 50, tags: [] }
   }
 }

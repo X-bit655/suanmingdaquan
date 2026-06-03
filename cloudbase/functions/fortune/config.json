@@ -1,0 +1,6 @@
+{
+  "timeout": 25,
+  "runtime": "Nodejs18.15",
+  "envVariables": {},
+  "triggers": []
+}

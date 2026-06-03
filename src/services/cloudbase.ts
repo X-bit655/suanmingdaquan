@@ -5,7 +5,7 @@ interface CloudFunctionError {
 
 export async function callCloudFunction<T = unknown>(name: string, data: Record<string, unknown>): Promise<T> {
   try {
-    const res = await uniCloud.callFunction({ name, data })
+    const res = await wx.cloud.callFunction({ name, data })
     const result = res.result as T & CloudFunctionError
     if (result?.code && result.code !== 0) {
       throw new CloudFunctionCallError(result.code, result.message || '云函数调用异常')

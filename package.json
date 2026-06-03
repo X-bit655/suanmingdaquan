@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "算命大全 - 中西多种算命方式小程序",
   "scripts": {
-    "dev:mp-weixin": "uni -p mp-weixin",
-    "build:mp-weixin": "uni build -p mp-weixin",
+    "dev:mp-weixin": "uni -p mp-weixin && cp -r cloudbase dist/dev/mp-weixin/cloudbase",
+    "build:mp-weixin": "uni build -p mp-weixin && cp -r cloudbase dist/build/mp-weixin/cloudbase",
+    "dev:h5": "uni",
+    "build:h5": "uni build -p h5",
     "type-check": "vue-tsc --noEmit",
     "test": "vitest run"
   },
@@ -23,6 +25,7 @@
     "@dcloudio/uni-cli-shared": "3.0.0-alpha-1000920260519001",
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-1000920260519001",
     "@vitejs/plugin-vue": "^6.0.7",
+    "@vitest/coverage-v8": "^4.1.7",
     "@vue/test-utils": "^2.4.10",
     "jsdom": "^29.1.1",
     "miniprogram-api-typings": "^3.12.0",

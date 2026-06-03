@@ -13,8 +13,8 @@ const emit = defineEmits<{ 'update:modelValue': [value: string] }>()
   </view>
 </template>
 <style lang="scss" scoped>
-.ink-input-wrap { background: var(--ink-surface-inset); border: 1rpx solid var(--ink-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); transition: var(--transition-ink); }
+.ink-input-wrap { background: rgba(255, 255, 255, 0.06); border: 1rpx solid var(--ink-border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); transition: var(--transition-ink); }
 .ink-input-wrap:focus-within { border-color: var(--ink-gold); box-shadow: var(--shadow-gold); }
 .ink-input, .ink-textarea { width: 100%; background: transparent; border: none; outline: none; font-family: var(--font-primary); font-size: var(--font-base); color: var(--ink-text); }
-.ink-textarea { min-height: 120rpx; resize: none; }
+.ink-textarea { min-height: 148rpx; resize: none; line-height: 1.55; }
 </style>

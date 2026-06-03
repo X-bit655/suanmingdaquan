@@ -1,1 +1,9 @@
-{"name":"fortune","version":"1.0.0","main":"index.ts","dependencies":{"wx-server-sdk":"latest"}}
+{
+  "name": "fortune",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}

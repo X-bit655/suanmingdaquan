@@ -1,37 +1,29 @@
-﻿<script setup lang="ts">
+<script setup lang="ts">
 defineProps<{ elevated?: boolean; gold?: boolean; padding?: boolean }>()
 </script>
+
 <template>
-  <view :class="['ink-card', { elevated, gold, 'no-pad': padding === false }]">
+  <view :class="['ink-card', { elevated, gold, pad: padding !== false }]">
     <slot />
   </view>
 </template>
+
 <style lang="scss" scoped>
 .ink-card {
-  position: relative;
-  overflow: hidden;
   background: var(--ink-surface);
-  border: 1rpx solid rgba(32, 28, 24, 0.08);
   border-radius: var(--radius-lg);
-  padding: var(--space-5);
-  box-shadow: var(--shadow-ink);
+  border: 1rpx solid var(--ink-border);
+  overflow: hidden;
   transition: var(--transition-ink);
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 4rpx;
-    background: linear-gradient(90deg, var(--ink-cinnabar), var(--ink-gold), var(--ink-jade));
-    opacity: 0;
-  }
-  &.elevated { background: var(--ink-surface-elevated); box-shadow: var(--shadow-ink-elevated); }
+  backdrop-filter: blur(18rpx);
+
+  &.pad { padding: var(--space-4); }
+  &.elevated { box-shadow: var(--shadow-ink); background: var(--ink-surface-elevated); }
   &.gold {
-    border-color: rgba(200, 166, 90, 0.42);
-    &::after { opacity: 1; }
+    background:
+      linear-gradient(135deg, rgba(34, 43, 58, 0.98), rgba(24, 31, 43, 0.96));
+    border: 1rpx solid rgba(217, 174, 95, 0.3);
+    box-shadow: 0 16rpx 46rpx rgba(0, 0, 0, 0.3);
   }
-  &.no-pad { padding: 0; }
-  &:active { transform: translateY(2rpx); }
 }
 </style>
